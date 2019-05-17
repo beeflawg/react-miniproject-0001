@@ -16,6 +16,17 @@ export const fetchSecrets = () => {
   }
 }
 
+export const addItem = (title,price) => {
+  return dispatch => {
+    return axios
+    .post(URL, {title,price})
+    .then(response =>{
+      dispatch(addItemSuccess(response.data))
+    })
+    .catch(error => {throw error})
+  }
+}
+
 export const fetchSecretsSuccess = secrets => (
   {
     type: GET_SECRETS,
@@ -23,8 +34,7 @@ export const fetchSecretsSuccess = secrets => (
   }
 )
 
-export const addItem = (title,price) => ({
+export const addItemSuccess = (item) => ({
   type:ADD,
-  title: title,
-  price: price
+  item:item
 })

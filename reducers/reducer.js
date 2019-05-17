@@ -20,7 +20,7 @@ const reducer = (state = initialState,action) =>{
     case ADD:
       return {
         ...state,
-        secrets: [...state.secrets, {title: action.title, price:action.price}]
+        secrets: [...state.secrets, action.item]
       }
     case GET_SECRETS:
       return {
